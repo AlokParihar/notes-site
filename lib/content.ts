@@ -11,7 +11,31 @@ import { subjects } from "./subjects";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
-export type EntryKind = "notes" | "assignments";
+export type EntryKind =
+  | "notes"
+  | "assignments"
+  | "qb"
+  | "pyq"
+  | "books"
+  | "syllabus";
+
+export const KIND_LABELS: Record<EntryKind, string> = {
+  notes: "Notes",
+  assignments: "Assignments",
+  qb: "Question Bank",
+  pyq: "Previous Year Papers",
+  books: "Books & Reference",
+  syllabus: "Syllabus",
+};
+
+export const KIND_ORDER: EntryKind[] = [
+  "syllabus",
+  "notes",
+  "assignments",
+  "qb",
+  "pyq",
+  "books",
+];
 
 export type EntryMeta = {
   slug: string;
@@ -21,7 +45,8 @@ export type EntryMeta = {
   date: string;
   tags: string[];
   summary: string;
-  status?: string; // e.g. "done", "in-progress" — mainly useful for assignments
+  status?: string;
+  fileUrl?: string; // optional: link to an external PDF instead of markdown content
 };
 
 export type Entry = EntryMeta & { html: string };
@@ -38,7 +63,7 @@ export function getAllEntryMeta(): EntryMeta[] {
   const all: EntryMeta[] = [];
 
   for (const subject of subjects) {
-    for (const kind of ["notes", "assignments"] as EntryKind[]) {
+    for (const kind of KIND_ORDER) {
       const dir = path.join(CONTENT_DIR, subject.slug, kind);
       const files = readDirSafe(dir);
 
@@ -54,12 +79,12 @@ export function getAllEntryMeta(): EntryMeta[] {
           tags: data.tags ?? [],
           summary: data.summary ?? "",
           status: data.status,
+          fileUrl: data.fileUrl,
         });
       }
     }
   }
 
-  // newest first
   return all.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
@@ -91,6 +116,7 @@ export async function getEntry(
     tags: data.tags ?? [],
     summary: data.summary ?? "",
     status: data.status,
+    fileUrl: data.fileUrl,
     html: processed.toString(),
   };
 }
