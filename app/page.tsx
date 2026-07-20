@@ -15,7 +15,7 @@ export default function Home() {
         </h1>
         <p className="mt-4 text-[var(--ink-dim)] max-w-xl leading-relaxed">
           Notes and assignments, worked through once and kept here — so nobody
-          has to ask twice. Not for placements. Just the record.
+          has to ask twice.
         </p>
       </header>
 
@@ -81,7 +81,7 @@ export default function Home() {
 
       <footer className="max-w-5xl mx-auto px-6 py-10 border-t border-[var(--rule)] mt-10">
         <p className="text-xs font-mono text-[var(--label)]">
-          compiled with love, not for placements.
+          compiled with love.
         </p>
       </footer>
     </main>
