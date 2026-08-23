@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { subjects, getSubject } from "@/lib/subjects";
-import { getEntry, getAllEntryMeta, EntryKind } from "@/lib/content";
+import { getSubject } from "@/lib/subjects";
+import { getEntry, getAllEntryMeta, EntryKind, KIND_LABELS, KIND_ORDER } from "@/lib/content";
 
 export function generateStaticParams() {
   const all = getAllEntryMeta();
@@ -19,7 +19,7 @@ export default async function EntryPage({
 }) {
   const { subject: subjectSlug, kind, slug } = await params;
   const subject = getSubject(subjectSlug);
-  if (!subject || (kind !== "notes" && kind !== "assignments")) notFound();
+  if (!subject || !KIND_ORDER.includes(kind as EntryKind)) notFound();
 
   const entry = await getEntry(subjectSlug, kind as EntryKind, slug);
   if (!entry) notFound();
@@ -42,7 +42,9 @@ export default async function EntryPage({
             {subject.address}
           </Link>
           <span className="text-[var(--rule-bright)]">/</span>
-          <span className="text-[var(--label)] uppercase">{kind}</span>
+          <span className="text-[var(--label)] uppercase">
+            {KIND_LABELS[kind as EntryKind]}
+          </span>
         </div>
 
         <h1 className="font-mono text-2xl md:text-3xl font-bold text-[var(--ink)] leading-snug">
@@ -54,12 +56,7 @@ export default async function EntryPage({
           {entry.status && (
             <>
               <span>·</span>
-              <span
-                style={{
-                  color:
-                    entry.status === "done" ? subject.color : "var(--label)",
-                }}
-              >
+              <span style={{ color: entry.status === "done" ? subject.color : "var(--label)" }}>
                 {entry.status}
               </span>
             </>
@@ -85,10 +82,7 @@ export default async function EntryPage({
       </div>
 
       <article className="max-w-3xl mx-auto px-6 pb-20">
-        <div
-          className="prose-note"
-          dangerouslySetInnerHTML={{ __html: entry.html }}
-        />
+        <div className="prose-note" dangerouslySetInnerHTML={{ __html: entry.html }} />
       </article>
 
       <div className="max-w-3xl mx-auto px-6 pb-16">

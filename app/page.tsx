@@ -97,6 +97,31 @@ export default function Home() {
         </section>
       )}
 
+      {/* Archive — separate from semesters, career-track material */}
+      <section className="max-w-5xl mx-auto px-6 py-10">
+        <div className="address-tag mb-6">BEYOND THE CURRICULUM</div>
+        <Link
+          href="/archive"
+          className="group relative flex items-center gap-6 py-6 border-t border-[var(--rule)] hover:border-t-[var(--accent-dim)] transition-colors"
+        >
+          <span className="font-mono text-sm shrink-0 w-20" style={{ color: "#c99b5f" }}>
+            0xF000
+          </span>
+          <div className="flex-1 min-w-0">
+            <h2 className="font-mono text-lg md:text-xl font-medium text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors">
+              Archive
+            </h2>
+            <p className="text-sm text-[var(--ink-dim)] mt-1">
+              DSA practice, interview guides — career-track, not for a specific sem.
+            </p>
+          </div>
+          <span className="text-[var(--label)] group-hover:text-[var(--accent)] group-hover:translate-x-1 transition-all">
+            →
+          </span>
+        </Link>
+        <div className="border-t border-[var(--rule)]" />
+      </section>
+
       <footer className="max-w-5xl mx-auto px-6 py-10 border-t border-[var(--rule)] mt-10">
         <p className="text-xs font-mono text-[var(--label)]">
           compiled with love.
