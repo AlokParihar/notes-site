@@ -31,12 +31,10 @@ export const KIND_LABELS: Record<EntryKind, string> = {
 export const KIND_ORDER: EntryKind[] = [
   "syllabus",
   "notes",
-  "assignments",
   "qb",
   "pyq",
   "books",
 ];
-
 export type EntryMeta = {
   slug: string;
   subjectSlug: string;

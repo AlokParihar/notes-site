@@ -16,7 +16,7 @@ export default function Home() {
           Alok&apos;s Notes
         </h1>
         <p className="mt-4 text-[var(--ink-dim)] max-w-xl leading-relaxed">
-          Notes and assignments, worked through once and kept here — so
+          Syllabus and Notes, worked through once and kept here — so
           nobody has to ask twice.
         </p>
       </header>
@@ -39,10 +39,7 @@ export default function Home() {
               const noteCount = entries.filter(
                 (e) => e.kind === "notes"
               ).length;
-              const assignCount = entries.filter(
-                (e) => e.kind === "assignments"
-              ).length;
-
+           
               return (
                 <Link
                   key={subject.slug}
