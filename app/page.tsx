@@ -71,7 +71,7 @@ export default function Home() {
 
                   <div className="hidden sm:flex flex-col items-end shrink-0 text-xs font-mono text-[var(--label)]">
                     <span>{noteCount} notes</span>
-                    <span>{assignCount} assignments</span>
+          
                   </div>
 
                   <span className="text-[var(--label)] group-hover:text-[var(--accent)] group-hover:translate-x-1 transition-all">
