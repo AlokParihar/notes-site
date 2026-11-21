@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getSubject } from "@/lib/subjects";
@@ -10,6 +11,29 @@ export function generateStaticParams() {
     kind: e.kind,
     slug: e.slug,
   }));
+}
+
+// Uses the `title` and `summary` from each markdown file's frontmatter.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ subject: string; kind: string; slug: string }>;
+}): Promise<Metadata> {
+  const { subject: subjectSlug, kind, slug } = await params;
+  const entry = getAllEntryMeta().find(
+    (e) => e.subjectSlug === subjectSlug && e.kind === kind && e.slug === slug
+  );
+  if (!entry) return {};
+
+  return {
+    title: entry.title,
+    description: entry.summary || undefined,
+    openGraph: {
+      title: entry.title,
+      description: entry.summary || undefined,
+      type: "article",
+    },
+  };
 }
 
 export default async function EntryPage({

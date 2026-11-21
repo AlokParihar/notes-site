@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { subjects, getSubject } from "@/lib/subjects";
@@ -5,6 +6,26 @@ import { getEntriesForSubject, KIND_ORDER, KIND_LABELS } from "@/lib/content";
 
 export function generateStaticParams() {
   return subjects.map((s) => ({ subject: s.slug }));
+}
+
+// Sets the browser-tab title and link preview for each subject page.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ subject: string }>;
+}): Promise<Metadata> {
+  const { subject: subjectSlug } = await params;
+  const subject = getSubject(subjectSlug);
+  if (!subject) return {};
+
+  const title = subject.code ? `${subject.name} (${subject.code})` : subject.name;
+  const description = `${subject.description} Semester ${subject.semester} — Alok's Notes.`;
+
+  return {
+    title,
+    description,
+    openGraph: { title, description, type: "website" },
+  };
 }
 
 export default async function SubjectPage({

@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ARCHIVE_ORDER, ARCHIVE_LABELS, getArchiveByCategory } from "@/lib/archive";
+
+const ARCHIVE_DESCRIPTION =
+  "Career-track material, not tied to any semester: 75 LeetCode problems with C++ solutions and interview guides.";
+
+export const metadata: Metadata = {
+  title: "Archive",
+  description: ARCHIVE_DESCRIPTION,
+  openGraph: { title: "Archive", description: ARCHIVE_DESCRIPTION, type: "website" },
+};
 
 export default function ArchivePage() {
   return (

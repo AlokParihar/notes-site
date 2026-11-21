@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -11,6 +12,33 @@ import {
 export function generateStaticParams() {
   const all = getAllArchiveMeta();
   return all.map((e) => ({ category: e.category, slug: e.slug }));
+}
+
+// Uses the `title` and `summary` from each archive file's frontmatter.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string; slug: string }>;
+}): Promise<Metadata> {
+  const { category, slug } = await params;
+  const entry = getAllArchiveMeta().find(
+    (e) => e.category === category && e.slug === slug
+  );
+  if (!entry) return {};
+
+  // "Arrays" alone says little in a shared link, so name the collection too.
+  const title =
+    entry.category === "leetcode-75" ? `LeetCode 75: ${entry.title}` : entry.title;
+
+  return {
+    title,
+    description: entry.summary || undefined,
+    openGraph: {
+      title,
+      description: entry.summary || undefined,
+      type: "article",
+    },
+  };
 }
 
 export default async function ArchiveEntryPage({
