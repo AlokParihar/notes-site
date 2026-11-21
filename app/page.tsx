@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { getSemesters } from "@/lib/subjects";
-import { getEntriesForSubject } from "@/lib/content";
+import { getEntriesForSubject, KIND_ORDER, type EntryKind } from "@/lib/content";
+
+// Short labels for the one-line "what's inside" summary under each subject.
+const SHORT_LABELS: Partial<Record<EntryKind, string>> = {
+  syllabus: "Syllabus",
+  qb: "Question bank",
+  pyq: "PYQs",
+  books: "Books",
+};
 
 export default function Home() {
   const semesters = getSemesters();
@@ -36,10 +44,16 @@ export default function Home() {
           <div className="flex flex-col">
             {subjects.map((subject) => {
               const entries = getEntriesForSubject(subject.slug);
-              const noteCount = entries.filter(
-                (e) => e.kind === "notes"
-              ).length;
-           
+              // Build a list like ["Syllabus", "PYQs", "2 notes"] from what exists.
+              const inside = KIND_ORDER.flatMap((kind) => {
+                const count = entries.filter((e) => e.kind === kind).length;
+                if (count === 0) return [];
+                if (kind === "notes") {
+                  return [`${count} ${count === 1 ? "note" : "notes"}`];
+                }
+                return [SHORT_LABELS[kind] ?? kind];
+              });
+
               return (
                 <Link
                   key={subject.slug}
@@ -67,11 +81,9 @@ export default function Home() {
                     <p className="text-sm text-[var(--ink-dim)] mt-1">
                       {subject.description}
                     </p>
-                  </div>
-
-                  <div className="hidden sm:flex flex-col items-end shrink-0 text-xs font-mono text-[var(--label)]">
-                    <span>{noteCount} notes</span>
-          
+                    <p className="text-xs font-mono text-[var(--label)] mt-2">
+                      {inside.length > 0 ? inside.join(" · ") : "nothing loaded yet"}
+                    </p>
                   </div>
 
                   <span className="text-[var(--label)] group-hover:text-[var(--accent)] group-hover:translate-x-1 transition-all">

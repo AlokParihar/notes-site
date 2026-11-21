@@ -21,7 +21,6 @@ export type EntryKind =
 
 export const KIND_LABELS: Record<EntryKind, string> = {
   notes: "Notes",
-  assignments: "Assignments",
   qb: "Question Bank",
   pyq: "Previous Year Papers",
   books: "Books & Reference",
