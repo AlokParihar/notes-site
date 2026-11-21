@@ -13,7 +13,6 @@ const CONTENT_DIR = path.join(process.cwd(), "content");
 
 export type EntryKind =
   | "notes"
-  | "assignments"
   | "qb"
   | "pyq"
   | "books"
