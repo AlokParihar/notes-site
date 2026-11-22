@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     type: "website",
     locale: "en_IN",
-    title: "Alok's Notes — memory map",
+    title: "Ryuzaki's Notes — memory map",
     description: SITE_DESCRIPTION,
   },
 };
