@@ -131,7 +131,7 @@ export default function Home() {
         <div className="border-t border-[var(--rule)]" />
       </section>
 
-      <footer className="max-w-5xl mx-auto px-6 py-10 border-t border-[var(--rule)] mt-10">
+      <footer className="max-w-5xl mx-auto px-6 pt-10 pb-4">
         <p className="text-xs font-mono text-[var(--label)]">
           compiled with love.
         </p>

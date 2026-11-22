@@ -10,6 +10,9 @@ import "./globals.css";
 
 const SITE_URL = "https://notes-site-theta.vercel.app";
 const SITE_NAME = "Alok's Notes";
+// Google Form that collects feedback; change this one line if the form ever moves.
+const FEEDBACK_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSevkSCL84IfSkEyvhz8xvtPWzJpoT8VbOvqJPbbADNzRwhE-Q/viewform";
 const SITE_DESCRIPTION =
   "Syllabus, previous-year papers and notes for RGPV CSE subjects, plus DSA practice and interview guides — worked through once and kept here.";
 
@@ -38,7 +41,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <footer className="w-full max-w-5xl mx-auto px-6 py-6 mt-auto border-t border-[var(--rule)]">
+          <p className="text-xs font-mono text-[var(--label)]">
+            Found a mistake or want something added?{" "}
+            <a
+              href={FEEDBACK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--amber)] hover:underline"
+            >
+              send feedback →
+            </a>
+          </p>
+        </footer>
+      </body>
     </html>
   );
 }
