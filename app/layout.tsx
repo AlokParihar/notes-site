@@ -10,7 +10,7 @@ import "./globals.css";
 import GoatCounter from "./goatcounter";
 
 const SITE_URL = "https://notes-site-theta.vercel.app";
-const SITE_NAME = "Ryuzaki's Notes";
+const SITE_NAME = "Alok's Notes";
 // Google Form that collects feedback; change this one line if the form ever moves.
 const FEEDBACK_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSevkSCL84IfSkEyvhz8xvtPWzJpoT8VbOvqJPbbADNzRwhE-Q/viewform";
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   // Pages that set a title get " | Alok's Notes" added; the homepage uses `default`.
   title: {
-    default: "Ryuzaki's Notes — memory map",
+    default: "Alok's Notes — memory map",
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     type: "website",
     locale: "en_IN",
-    title: "Ryuzaki's Notes — memory map",
+    title: "Alok's Notes — memory map",
     description: SITE_DESCRIPTION,
   },
 };
@@ -43,12 +43,22 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className="min-h-full flex flex-col">
-        <div className="w-full max-w-5xl mx-auto px-6 pt-4 flex justify-end">
+        <div className="w-full max-w-5xl mx-auto px-6 pt-4 flex items-center justify-end gap-3">
+          {/* Plain GET form: works even before JavaScript loads. */}
+          <form action="/search" method="get" role="search" className="flex-1 sm:flex-none">
+            <input
+              type="search"
+              name="q"
+              placeholder="search notes…"
+              aria-label="Search the site"
+              className="w-full sm:w-56 bg-transparent border border-[var(--rule-bright)] rounded px-3 py-1.5 text-xs font-mono text-[var(--ink)] placeholder:text-[var(--label)] focus:outline-none focus:border-[var(--amber)]"
+            />
+          </form>
           <a
             href={FEEDBACK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-mono text-[var(--amber)] border border-[var(--rule-bright)] rounded px-3 py-1.5 hover:border-[var(--amber)] transition-colors"
+            className="shrink-0 text-xs font-mono text-[var(--amber)] border border-[var(--rule-bright)] rounded px-3 py-1.5 hover:border-[var(--amber)] transition-colors"
           >
             give feedback ↗
           </a>
