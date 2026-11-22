@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   // Pages that set a title get " | Alok's Notes" added; the homepage uses `default`.
   title: {
-    default: "Alok's Notes — memory map",
+    default: "Ryuzaki's Notes — memory map",
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
