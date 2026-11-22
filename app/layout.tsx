@@ -42,6 +42,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className="min-h-full flex flex-col">
+        <div className="w-full max-w-5xl mx-auto px-6 pt-4 flex justify-end">
+          <a
+            href={FEEDBACK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-mono text-[var(--amber)] border border-[var(--rule-bright)] rounded px-3 py-1.5 hover:border-[var(--amber)] transition-colors"
+          >
+            give feedback ↗
+          </a>
+        </div>
         {children}
         <footer className="w-full max-w-5xl mx-auto px-6 py-6 mt-auto border-t border-[var(--rule)]">
           <p className="text-xs font-mono text-[var(--label)]">
