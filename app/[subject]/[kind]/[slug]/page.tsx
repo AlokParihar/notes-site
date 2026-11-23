@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getSubject } from "@/lib/subjects";
 import { getEntry, getAllEntryMeta, EntryKind, KIND_LABELS, KIND_ORDER } from "@/lib/content";
+import { countTrackable, isTrackablePage } from "@/lib/progress";
+import { progressKey } from "@/lib/progress-key";
+import QuestionTracker from "./question-tracker";
 
 export function generateStaticParams() {
   const all = getAllEntryMeta();
@@ -106,7 +109,15 @@ export default async function EntryPage({
       </div>
 
       <article className="max-w-3xl mx-auto px-6 pb-20">
-        <div className="prose-note" dangerouslySetInnerHTML={{ __html: entry.html }} />
+        {isTrackablePage(kind, slug) ? (
+          <QuestionTracker
+            html={entry.html}
+            storageKey={progressKey(subjectSlug, slug)}
+            total={countTrackable(subjectSlug, kind, slug)}
+          />
+        ) : (
+          <div className="prose-note" dangerouslySetInnerHTML={{ __html: entry.html }} />
+        )}
       </article>
 
       <div className="max-w-3xl mx-auto px-6 pb-16">
