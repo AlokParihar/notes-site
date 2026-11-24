@@ -12,7 +12,6 @@ export type Track = {
   artist?: string; // shown next to the title; put the credit the license asks for
   file: string;
 };
-
 export const TRACKS: Track[] = [
-   { title: "Kaha Tak", artist: "Kr$na", file: "D:\Downloads\notes-site\notes-site\public\music\KahaTak.m4a" },
+  { title: "Kaha Tak", artist: "Kr$na", file: "/music/KahaTak.m4a" },
 ];
