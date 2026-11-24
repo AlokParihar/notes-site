@@ -15,10 +15,7 @@
 //
 // While both are empty, the disc does not appear on the site at all.
 
-export const YOUTUBE_PLAYLIST = "";
-// Example:
- export const YOUTUBE_PLAYLIST = "https://youtube.com/playlist?list=RDSR57_CPR-lU&playnext=1&si=Y4SBemNf4HjDZTAF";
-
+export const YOUTUBE_PLAYLIST = "https://youtube.com/playlist?list=RDSR57_CPR-lU&playnext=1&si=Y4SBemNf4HjDZTAF";
 export type Track = {
   title: string;
   artist?: string;
