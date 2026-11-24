@@ -14,5 +14,5 @@ export type Track = {
 };
 
 export const TRACKS: Track[] = [
-   { title: "Kaha Tak", artist: "Kr$na", file: "D:\Downloads\notes-site\notes-site\public\music" },
+   { title: "Kaha Tak", artist: "Kr$na", file: "D:\Downloads\notes-site\notes-site\public\music\KahaTak.m4a" },
 ];
