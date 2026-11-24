@@ -8,6 +8,7 @@ import "@fontsource/jetbrains-mono/500.css";
 import "@fontsource/jetbrains-mono/700.css";
 import "./globals.css";
 import GoatCounter from "./goatcounter";
+import MusicDisc from "./music-disc";
 
 const SITE_URL = "https://notes-site-theta.vercel.app";
 const SITE_NAME = "Alok's Notes";
@@ -65,6 +66,7 @@ export default function RootLayout({
         </div>
         {children}
         <GoatCounter />
+        <MusicDisc />
         <footer className="w-full max-w-5xl mx-auto px-6 py-6 mt-auto border-t border-[var(--rule)]">
           <p className="text-xs font-mono text-[var(--label)]">
             Anonymous visit counts, no cookies. Found a mistake or want something added?{" "}
