@@ -10,6 +10,7 @@ import "./globals.css";
 import GoatCounter from "./goatcounter";
 import MusicDisc from "./music-disc";
 import { YOUTUBE_PLAYLIST, getPlaylistId } from "@/lib/music";
+import { MILE_URL } from "@/lib/links";
 
 const SITE_URL = "https://notes-site-theta.vercel.app";
 const SITE_NAME = "Alok's Notes";
@@ -73,6 +74,15 @@ export default function RootLayout({
             Anonymous visit counts, no cookies.{" "}
             {getPlaylistId(YOUTUBE_PLAYLIST) &&
               "If you press play on the music, YouTube's player loads and may set its own. "}
+            <a
+              href={MILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--amber)] hover:underline"
+            >
+              MILE portal ↗
+            </a>
+            {" · "}
             Found a mistake or want something added?{" "}
             <a
               href={FEEDBACK_URL}

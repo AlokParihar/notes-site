@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { getSemesters } from "@/lib/subjects";
 import { getEntriesForSubject, KIND_ORDER, type EntryKind } from "@/lib/content";
+import { getTrackerInfo } from "@/lib/progress";
+import ProgressLine from "./progress-line";
+import { MILE_URL } from "@/lib/links";
 
 // Short labels for the one-line "what's inside" summary under each subject.
 const SHORT_LABELS: Partial<Record<EntryKind, string>> = {
@@ -54,6 +57,8 @@ export default function Home() {
                 return [SHORT_LABELS[kind] ?? kind];
               });
 
+              const tracker = getTrackerInfo(subject.slug);
+
               return (
                 <Link
                   key={subject.slug}
@@ -84,6 +89,13 @@ export default function Home() {
                     <p className="text-xs font-mono text-[var(--label)] mt-2">
                       {inside.length > 0 ? inside.join(" · ") : "nothing loaded yet"}
                     </p>
+                    {tracker && (
+                      <ProgressLine
+                        subjectSlug={subject.slug}
+                        slug={tracker.slug}
+                        total={tracker.total}
+                      />
+                    )}
                   </div>
 
                   <span className="text-[var(--label)] group-hover:text-[var(--accent)] group-hover:translate-x-1 transition-all">
@@ -128,6 +140,34 @@ export default function Home() {
             →
           </span>
         </Link>
+        <div className="border-t border-[var(--rule)]" />
+      </section>
+
+      {/* College tools — links out to the student portal */}
+      <section className="max-w-5xl mx-auto px-6 py-10">
+        <div className="address-tag mb-6">COLLEGE</div>
+        <a
+          href={MILE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative flex items-center gap-6 py-6 border-t border-[var(--rule)] hover:border-t-[var(--accent-dim)] transition-colors"
+        >
+          <span className="font-mono text-sm shrink-0 w-20" style={{ color: "#8fb8a8" }}>
+            0xE000
+          </span>
+          <div className="flex-1 min-w-0">
+            <h2 className="font-mono text-lg md:text-xl font-medium text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors">
+              MILE portal
+            </h2>
+            <p className="text-sm text-[var(--ink-dim)] mt-1">
+              Attendance, certificates, assignment marks and the leaderboard — opens
+              SISTec&apos;s MILE in a new tab.
+            </p>
+          </div>
+          <span className="text-[var(--label)] group-hover:text-[var(--accent)] group-hover:translate-x-1 transition-all">
+            ↗
+          </span>
+        </a>
         <div className="border-t border-[var(--rule)]" />
       </section>
 
