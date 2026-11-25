@@ -24,7 +24,7 @@ export default function Home() {
       <header className="max-w-5xl mx-auto px-6 pt-16 pb-10 md:pt-24 md:pb-14">
         <div className="address-tag mb-3">0x0000 — ENTRY POINT</div>
         <h1 className="font-mono text-4xl md:text-5xl font-bold tracking-tight text-[var(--ink)] leading-tight">
-          Alok&apos;s Notes
+          The Inner Sanctum
         </h1>
         <p className="mt-4 text-[var(--ink-dim)] max-w-xl leading-relaxed">
           Syllabus and Notes, worked through once and kept here — so
@@ -35,6 +35,24 @@ export default function Home() {
       <div className="max-w-5xl mx-auto px-6">
         <div className="h-px bg-[var(--rule)] mb-2" />
       </div>
+
+      {/* Mid-sem mode entry */}
+      <section className="max-w-5xl mx-auto px-6 pt-8">
+        <Link
+          href="/mid-sem"
+          className="group flex items-center gap-4 rounded border border-[var(--rule-bright)] px-5 py-4 hover:border-[var(--amber)] transition-colors"
+        >
+          <div className="flex-1 min-w-0">
+            <div className="font-mono text-sm text-[var(--amber)]">Mid-sem mode</div>
+            <p className="text-sm text-[var(--ink-dim)] mt-1">
+              Pick your units, see the most repeated topics across all subjects.
+            </p>
+          </div>
+          <span className="text-[var(--label)] group-hover:text-[var(--amber)] group-hover:translate-x-1 transition-all">
+            →
+          </span>
+        </Link>
+      </section>
 
       {/* Memory map grouped by semester */}
       {semesters.map(({ semester, subjects }) => (

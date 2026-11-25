@@ -13,7 +13,7 @@ import { YOUTUBE_PLAYLIST, getPlaylistId } from "@/lib/music";
 import { MILE_URL } from "@/lib/links";
 
 const SITE_URL = "https://notes-site-theta.vercel.app";
-const SITE_NAME = "Inner Sanctum";
+const SITE_NAME = "The Inner Sanctum";
 // Google Form that collects feedback; change this one line if the form ever moves.
 const FEEDBACK_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSevkSCL84IfSkEyvhz8xvtPWzJpoT8VbOvqJPbbADNzRwhE-Q/viewform";
@@ -23,9 +23,9 @@ const SITE_DESCRIPTION =
 export const metadata: Metadata = {
   // Lets pages use relative URLs for link previews.
   metadataBase: new URL(SITE_URL),
-  // Pages that set a title get " | Alok's Notes" added; the homepage uses `default`.
+  // Pages that set a title get " | The Inner Sanctum" added; the homepage uses `default`.
   title: {
-    default: "Alok's Notes — memory map",
+    default: "The Inner Sanctum — memory map",
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     type: "website",
     locale: "en_IN",
-    title: "Alok's Notes — memory map",
+    title: "The Inner Sanctum — memory map",
     description: SITE_DESCRIPTION,
   },
 };
