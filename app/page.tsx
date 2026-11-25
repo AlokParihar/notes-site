@@ -173,7 +173,7 @@ export default function Home() {
 
       <footer className="max-w-5xl mx-auto px-6 pt-10 pb-4">
         <p className="text-xs font-mono text-[var(--label)]">
-          compiled with love.
+          compiled with love by Alok.
         </p>
       </footer>
     </main>
