@@ -46,25 +46,36 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className="min-h-full flex flex-col">
-        <div className="w-full max-w-5xl mx-auto px-6 pt-4 flex items-center justify-end gap-3">
-          {/* Plain GET form: works even before JavaScript loads. */}
-          <form action="/search" method="get" role="search" className="flex-1 sm:flex-none">
-            <input
-              type="search"
-              name="q"
-              placeholder="search notes…"
-              aria-label="Search the site"
-              className="w-full sm:w-56 bg-transparent border border-[var(--rule-bright)] rounded px-3 py-1.5 text-xs font-mono text-[var(--ink)] placeholder:text-[var(--label)] focus:outline-none focus:border-[var(--amber)]"
-            />
-          </form>
+        <div className="w-full max-w-5xl mx-auto px-6 pt-4 flex items-center gap-3">
+          {/* Top left: quick way to the college portal (opens in a new tab) */}
           <a
-            href={FEEDBACK_URL}
+            href={MILE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 text-xs font-mono text-[var(--amber)] border border-[var(--rule-bright)] rounded px-3 py-1.5 hover:border-[var(--amber)] transition-colors"
+            className="shrink-0 text-xs font-mono text-[var(--accent)] border border-[var(--rule-bright)] rounded px-3 py-1.5 hover:border-[var(--accent)] transition-colors"
           >
-            give feedback ↗
+            MILE ↗
           </a>
+          <div className="flex flex-1 min-w-0 items-center justify-end gap-3">
+            {/* Plain GET form: works even before JavaScript loads. */}
+            <form action="/search" method="get" role="search" className="flex-1 min-w-0 sm:flex-none">
+              <input
+                type="search"
+                name="q"
+                placeholder="search…"
+                aria-label="Search the site"
+                className="w-full min-w-0 sm:w-56 bg-transparent border border-[var(--rule-bright)] rounded px-3 py-1.5 text-xs font-mono text-[var(--ink)] placeholder:text-[var(--label)] focus:outline-none focus:border-[var(--amber)]"
+              />
+            </form>
+            <a
+              href={FEEDBACK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 text-xs font-mono text-[var(--amber)] border border-[var(--rule-bright)] rounded px-3 py-1.5 hover:border-[var(--amber)] transition-colors"
+            >
+              give feedback ↗
+            </a>
+          </div>
         </div>
         {children}
         <GoatCounter />
