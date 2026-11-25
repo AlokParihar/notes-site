@@ -1,3 +1,4 @@
+
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -7,6 +8,7 @@ import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
+import rehypeExternalLinks from "rehype-external-links";
 import { subjects } from "./subjects";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
@@ -33,6 +35,7 @@ export const KIND_ORDER: EntryKind[] = [
   "pyq",
   "books",
 ];
+
 export type EntryMeta = {
   slug: string;
   subjectSlug: string;
@@ -42,7 +45,7 @@ export type EntryMeta = {
   tags: string[];
   summary: string;
   status?: string;
-  fileUrl?: string; // optional: link to an external PDF instead of markdown content
+  fileUrl?: string;
 };
 
 export type Entry = EntryMeta & { html: string };
@@ -99,6 +102,10 @@ export async function getEntry(
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype)
+    .use(rehypeExternalLinks, {
+      target: "_blank",
+      rel: ["noopener", "noreferrer"],
+    })
     .use(rehypeHighlight)
     .use(rehypeStringify)
     .process(content);
