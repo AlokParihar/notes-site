@@ -13,7 +13,7 @@ import { YOUTUBE_PLAYLIST, getPlaylistId } from "@/lib/music";
 import { MILE_URL } from "@/lib/links";
 
 const SITE_URL = "https://notes-site-theta.vercel.app";
-const SITE_NAME = "Alok's Notes";
+const SITE_NAME = "Inner Sanctum";
 // Google Form that collects feedback; change this one line if the form ever moves.
 const FEEDBACK_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSevkSCL84IfSkEyvhz8xvtPWzJpoT8VbOvqJPbbADNzRwhE-Q/viewform";
