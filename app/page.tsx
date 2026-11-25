@@ -36,24 +36,6 @@ export default function Home() {
         <div className="h-px bg-[var(--rule)] mb-2" />
       </div>
 
-      {/* Mid-sem mode entry */}
-      <section className="max-w-5xl mx-auto px-6 pt-8">
-        <Link
-          href="/mid-sem"
-          className="group flex items-center gap-4 rounded border border-[var(--rule-bright)] px-5 py-4 hover:border-[var(--amber)] transition-colors"
-        >
-          <div className="flex-1 min-w-0">
-            <div className="font-mono text-sm text-[var(--amber)]">Mid-sem mode</div>
-            <p className="text-sm text-[var(--ink-dim)] mt-1">
-              Pick your units, see the most repeated topics across all subjects.
-            </p>
-          </div>
-          <span className="text-[var(--label)] group-hover:text-[var(--amber)] group-hover:translate-x-1 transition-all">
-            →
-          </span>
-        </Link>
-      </section>
-
       {/* Memory map grouped by semester */}
       {semesters.map(({ semester, subjects }) => (
         <section key={semester} className="max-w-5xl mx-auto px-6 py-10">
