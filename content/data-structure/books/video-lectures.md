@@ -10,8 +10,7 @@ summary: "YouTube one-shot revision playlist covering Units 1 to 5, good for qui
 **Playlist:** ONESHOT DATA STRUCTURE 1 TO 5 UNIT
 **Channel:** Engineer dude learning
 **Videos:** 8
-<a href="https://youtube.com/playlist?list=PL7kAvTwKooxeuLJsJUTpJ16wsH7Vnc9eX" target="_blank" rel="noopener noreferrer">Watch the playlist on YouTube ↗</a>
-
+[Watch the playlist on YouTube ↗](https://youtube.com/playlist?list=PL7kAvTwKooxeuLJsJUTpJ16wsH7Vnc9eX)
 ## How to use it
 
 One-shot videos are for revision, not first-time learning. Go through the syllabus page first, then use this playlist to fill gaps and refresh before the exam.
